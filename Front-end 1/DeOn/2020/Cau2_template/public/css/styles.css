@@ -1,0 +1,63 @@
+.status-post {padding: 30px 0; border-bottom: 1px solid #ddd;}
+.status-text {
+    background-color: #fff;
+    border-color: #ddd;
+    border-width: 1px;
+    border-radius: 4px 4px 0 0;
+    box-shadow: 0 3px 6px rgba(0,0,0,.05);
+}
+.btn-color {
+	width: 30px; height: 30px; border-radius: 50%;
+}
+
+.status-color {padding: 5px; text-align: center; background: #f5f5f5; border-left: 1px solid #ddd; border-right: 1px solid #ddd;}
+
+.nobg {background: #fff;}
+
+.red {
+	color: #fff;
+	background: #CB356B;
+	background: -webkit-linear-gradient(to right, #BD3F32, #CB356B);
+	background: linear-gradient(to right, #BD3F32, #CB356B);
+}
+.green {
+	color: #fff;
+	background: #00b09b;
+	background: -webkit-linear-gradient(to right, #96c93d, #00b09b);
+	background: linear-gradient(to right, #96c93d, #00b09b);
+}
+
+.blue {
+	color: #fff;
+	background: #24C6DC;
+	background: -webkit-linear-gradient(to right, #514A9D, #24C6DC);
+	background: linear-gradient(to right, #514A9D, #24C6DC);
+}
+
+.yellow {
+	color: #fff;
+	background: #fceabb;
+	background: -webkit-linear-gradient(to right, #f8b500, #fceabb);
+	background: linear-gradient(to right, #f8b500, #fceabb);
+}
+.orange {
+	color: #fff;
+	background: #fc4a1a;
+	background: -webkit-linear-gradient(to right, #f7b733, #fc4a1a);
+	background: linear-gradient(to right, #f7b733, #fc4a1a);
+}
+
+.status-btn { padding: 15px; background: #e8e8e8; text-align: right; 
+    border-radius: 0 0 4px 4px; border: 1px solid #ddd;}
+
+.timeline {margin: 30px 0;}
+
+.my-status {
+	border: 1px solid #e0e0e0; border-radius: 15px; padding: 15px; margin: 15px 0; position: relative;
+}
+.my-status::before {
+	font: normal normal normal 14px/1 FontAwesome; content: "\f2bd"; font-size: 50px; position: absolute; left: -70px; top: 15px; color: #ccc;
+}
+.big-text {font-size: 1.8em; font-weight: bold;}
+
+footer {padding: 30px 0; text-align: center;}

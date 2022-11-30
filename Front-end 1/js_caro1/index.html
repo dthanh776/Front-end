@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tic & Toe</title>
+    <style>
+        table {
+            background-color: aqua;
+            margin: auto;
+            border-collapse: collapse;
+        }
+
+        td {
+            width: 50px;
+            height: 50px;
+            border: 1px solid white;
+        }
+
+        .content {
+            width: 1024px;
+            margin: auto;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .nobd {
+            border: none !important;
+        }
+
+        .check,
+        #countdown {
+            font-family: cursive;
+            font-weight: bold;
+            font-size: 20pt;
+            color: #53532b;
+            text-shadow: 0 0 black;
+            text-align: center;
+        }
+
+        button {
+            width: 100px;
+            margin: 12px;
+            border: none;
+            border-radius: 8px;
+            background: aliceblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <h2>Tic & Toe</h2>
+
+        <table>
+            <tr>
+                <th colspan="10">
+                    <button class="check" id="tictoe">X/O</button>
+                    <button class="check" id="other">*/+</button>
+                    <button class="check" id="start">Start</button>
+                    <button class="check" id="clear">Clear</button>
+                    <div id="countdown">
+                        <span id="m">00</span> :
+                        <span id="s">00</span>
+                    </div>
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    <!-- <div class="check">x</div> -->
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        const button = document.querySelectorAll("button");
+        const td = document.querySelectorAll("td");
+        let check = "X";
+        let choose = "";
+        button.forEach(item => {
+            item.addEventListener("click", () => {
+                if (item.textContent == "Clear") {
+                    td.forEach(item => {
+                        item.textContent = "";
+                    })
+                }
+                else if (item.getAttribute('id') == "tictoe") {
+                    choose = "X";
+                }
+                else if (item.getAttribute('id') == "other") {
+                    choose = "*";
+                }
+                else {
+                    start();
+                }
+            })
+        })
+        td.forEach(item => {
+            item.addEventListener("click", () => {
+                if (choose == "X") {
+                    if (check == "X") {
+                        item.innerHTML = '<div class="check">O</div>';
+                        check = "0";
+                    }
+                    else {
+                        item.innerHTML = '<div class="check">X</div>';
+                        check = "X";
+                    }
+                }
+                else {
+                    if (check == "*") {
+                        item.innerHTML = '<div class="check">*</div>';
+                        check = "+";
+                    }
+                    else {
+                        item.innerHTML = '<div class="check">+</div>';
+                        check = "*";
+                    }
+                }
+            })
+        })
+        let timeout = null;
+        let m = 0;
+        let s = 0;
+        function start() {
+            /*BƯỚC 1: CHUYỂN ĐỔI DỮ LIỆU*/
+            // Nếu số giây = -1 tức là đã chạy ngược hết số giây, lúc này:
+            //  - giảm số phút xuống 1 đơn vị
+            //  - thiết lập số giây lại 59
+            if (s === 59) {
+                m += 1;
+                s = 0;
+            }
+            // Nếu số phút = -1 tức là đã chạy ngược hết số phút, lúc này:
+            //  - giảm số giờ xuống 1 đơn vị
+            //  - thiết lập số phút lại 59
+
+            /*BƯỚC 1: HIỂN THỊ ĐỒNG HỒ*/
+            document.querySelector('#m').innerText = m.toString();
+            document.querySelector('#s').innerText = s.toString();
+
+            /*BƯỚC 1: GIẢM PHÚT XUỐNG 1 GIÂY VÀ GỌI LẠI SAU 1 GIÂY */
+            timeout = setTimeout(function () {
+                s++;
+                start();
+            }, 1000);
+        }
+    </script>
+</body>
+
+</html>

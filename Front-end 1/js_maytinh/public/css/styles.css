@@ -1,0 +1,78 @@
+body {
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: "Roboto", sans-serif;
+  background: linear-gradient(140deg, #0fb8ad, #0c6c8e) no-repeat;
+  font-size: 2.5em;
+}
+header,
+footer {
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+}
+footer {
+  font-size: 0.75em;
+}
+.calculator {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  margin: 50px 0 20px;
+  color: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#operation {
+  padding-top: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: right;
+}
+
+#result {
+  text-align: right;
+  padding: 15px;
+  font-size: 2em;
+}
+
+.cal-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border: none;
+  border-radius: 0;
+  display: block;
+  width: 100%;
+  padding: 15px;
+  text-align: center;
+  margin-top: 1px;
+}
+.cal-btn:hover {
+  background: rgba(255, 255, 255, 0.4);
+  color: #fff;
+}
+.calculator .col-md-3,
+.calculator .col-md-6 {
+  padding-left: 0px;
+  padding-right: 1px;
+}
+.calculator .row {
+  margin-right: -1px;
+  margin-left: 0;
+}
+#clock {
+  color: #fff;
+  text-align: center;
+}
+
+.button__sc {
+  font-weight: 900;
+  width: 200px;
+  color: red;
+  font-size: 30px;
+  background: white;
+}
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

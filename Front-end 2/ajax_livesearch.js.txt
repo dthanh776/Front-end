@@ -1,0 +1,229 @@
+showModal();
+
+function showModal() {
+    const productPhoto = document.querySelectorAll('.product-photo');
+    productPhoto.forEach(element => {
+        element.addEventListener('click', (e) => {
+            getProductDetail(element.dataset.productId);
+        });
+    });
+}
+
+async function getProductDetail(productId) {
+    const url = './api/product/show';
+    const data = { productId: productId };
+    const token = document.querySelector('meta[name=csrf-token]').getAttribute('content');
+    const response = await fetch(url, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'X-CSRF-TOKEN': token
+        },
+        body: JSON.stringify(data)
+    });
+
+    // Nhan kq & giao dien
+    const result = await response.json();
+
+    const modal = document.querySelector('#exampleModal');
+    modal.innerHTML = `<div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">${result.product_name}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img class="img-fluid" src="images/${result.product_photo}"></img>
+        <h2>Mô tả</h2>
+        <p>${result.product_description}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+const btnComment = document.querySelector('#btn-comment');
+if (btnComment) {
+    btnComment.addEventListener('click', function () {
+        addComment(this.dataset.productId, this.dataset.url);
+    });
+}
+
+async function addComment(productId, url) {
+    const commentContent = document.querySelector('#comment_content');
+    const rating = document.querySelector('#rating');
+    const data = {
+        comment_content: commentContent.value,
+        product_id: productId,
+        rating: rating.value
+    };
+    const token = document.querySelector('meta[name=csrf-token]').getAttribute('content');
+    const response = await fetch(url, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'X-CSRF-TOKEN': token
+        },
+        body: JSON.stringify(data)
+    });
+    // Xu ly ket qua va hien thi giao dien
+    const result = await response.json();
+    const commentsList = document.querySelector('#comments-list');
+    commentsList.innerHTML = '';
+    result.forEach(element => {
+        commentsList.innerHTML += `
+        <li class="list-group-item">
+            ${element.rating} -
+            ${element.comment_content}
+        </li>
+        `;
+    });
+    commentContent.value = '';
+    rating.value = '';
+}
+
+// Like
+let likePost = document.querySelectorAll('.btn-like');
+for (like of likePost) {
+    like.addEventListener('click', ajaxLike);
+}
+
+let arrID = [];
+displayLiked();
+function displayLiked() {
+    if (localStorage.getItem('myArray') != null) {
+        arrID = JSON.parse(localStorage.getItem('myArray'));
+    }
+}
+
+async function ajaxLike() {
+    const postID = parseInt(this.getAttribute('data-product-id'));
+
+    const url = this.dataset.url;
+
+    if (arrID.indexOf(postID) === -1) {
+        arrID.push(postID);
+        console.log(postID);
+        localStorage.setItem('myArray', JSON.stringify(arrID));
+        //localStorage.removeItem("myArray");
+        console.log(localStorage.getItem("myArray"));
+        const data = {
+            productId: postID
+        };
+
+        const token = document.querySelector('meta[name=csrf-token]').getAttribute('content');
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'X-CSRF-TOKEN': token
+            },
+            body: JSON.stringify(data)
+        });
+
+        const result = await response.text();
+        this.nextElementSibling.innerHTML = result;
+        this.removeEventListener('click', ajaxLike);
+    }
+}
+
+//Loadmore
+const btnLoadmore = document.querySelector('.btn-loadmore');
+let url = "api/product/loadmore?page=2";
+
+if (btnLoadmore) {
+    btnLoadmore.addEventListener('click', function () {
+        loadMore();
+    });
+}
+
+async function loadMore() {
+    const response = await fetch(url);
+    const result = await response.json();
+    url = result.next_page_url;
+
+    // Hien thi giao dien
+    const productList = document.querySelector('.product-list');
+    result.data.forEach(element => {
+        productList.innerHTML += `
+        <div class="col">
+            <div class="card">
+            <img data-bs-toggle="modal" data-bs-target="#exampleModal" src="images/${element.product_photo}" class="card-img-top product-photo" alt="..." data-product-id="${element.id}">
+            <div class="card-body">
+                <a href="products/${element.id}">
+                <h5 class="card-title">${element.product_name}</h5>
+                </a>
+                
+                <button class="btn btn-primary btn-like" data-product-id="${element.id}" data-url="/api/product/like">Like</button>
+                <span  id="${element.id}" class="badge bg-secondary">${element.likes}</span>
+
+                <p class="card-text">
+                ${renderCategories(element.categories)}
+                ${element.product_price}
+                </p>
+            </div>
+            </div>
+        </div>
+        `;
+    });
+    if (url == null) {
+        btnLoadmore.remove();
+    }
+    displayLiked();
+}
+
+//function display all categories of product
+function renderCategories(categories) {
+    let render = '';
+    categories.forEach(element => {
+        render += `<span class="badge bg-warning text-dark">${element.category_name}</span>`;
+    });
+    return render;
+}
+
+async function searchProduct(keyword) {
+    const inputSearch = document.querySelector('#inputSeach');
+    const url = inputSearch.dataset.url;
+    const data = { keyword: keyword };
+    console.log(url);
+    const response = await fetch(url, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+        },
+        body: JSON.stringify(data)
+    });
+
+    const result = await response.json();
+    const divResult = document.querySelector('#displaySearch');
+    divResult.innerHTML = '';
+
+    result.forEach(element => {
+       const regex = new RegExp(keyword, 'gi');
+       const str = element.product_name.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+       const newText = element.product_name.replace(regex, `<mark style='padding:0!important; background-color:yellow!important'>$&</mark>`);
+        const newText = element.product_name;
+        divResult.innerHTML += `
+        <li class="list-group-item">
+        <div class='row'> 
+        <div class='col-4'> 
+        <img src="images/${element.product_photo}" alt="" class="img-fluid">
+        </div>
+        <div class='col-8'>
+        <p>${newText}</p>
+        </div>
+        </div>
+        </li>
+    `;
+    });
+
+    if (inputSearch.value.length == 0) {
+        divResult.innerHTML = '';
+    }
+}

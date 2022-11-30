@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="./public/css/styles.css">
+    <style>
+        .bar {
+            width: 50px;
+            border-radius: 5px;
+            text-align: center;
+            padding: 15px;
+            float: left;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled">Disabled</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+    <!-- Banner -->
+    <!-- Main content -->
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-md-4">
+                <h4>Your Data</h4>
+                <label for="bar" class="form-label">Values</label>
+                <input type="text" class="form-control" id="bar">
+                
+                <button class="btn btn-primary" id="btn-draw">Draw me</button>
+            </div>
+            <div class="col-md-8">
+                <h4>Result</h4>
+                <div id="result">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="bg-dark text-center py-5 text-white">
+        Copyright &copy; 2022 FIT-TDC
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script>
+        const btnDraw = document.querySelector('#btn-draw');
+        btnDraw.addEventListener('click', function () {
+            
+            // const bar = document.querySelector('#bar').value.split(',').map(e => +e);
+            const bar = document.querySelector('#bar').value.split(',').map(Number);
+
+            // for (let i = 0; i < bar.length; i++) {
+            //     bar[i] = parseInt(bar[i]);
+            // }
+            max = Math.max(...bar);
+
+            const result = document.querySelector('#result');
+            if (bar.length <= 8) {
+                result.innerHTML = '';
+                bar.forEach(element => {
+                    height = element * 500 / max;
+                    result.innerHTML += `<div class="bar bg-warning" style="height: ${height}px;">${element}</div>`;
+                });
+            }
+            else {
+                alert('Error!!!')
+            }
+            
+        });
+    </script>
+</body>
+
+</html>

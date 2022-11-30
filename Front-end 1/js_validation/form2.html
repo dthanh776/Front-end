@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MSSV</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <style>
+        body {
+            background: #d4f5f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Register Form</h1>
+        <form action="#" method="get" novalidate>
+            <!-- Fullname -->
+            <div class="row gx-3">
+                <label for="fullname" class="form-label">Fullname</label>
+                <input type="text" class="form-control" name="fullname" required pattern="[a-zA-Z0-9]{3,}(\s?[a-zA-Z0-9]+)*"> 
+                <div class="invalid-feedback">  //Bui Duy Thanh
+                    Sai Fullname
+                </div>
+            </div>
+            <!-- Email -->
+            <div class="row gx-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="text" class="form-control" name="email" required pattern="\w+@[a-z]+(\.[a-z]+)*">
+                <div class="invalid-feedback"> //dthanh776@gmail.com
+                    Sai Email
+                </div>
+            </div>
+            <!-- Phone -->
+            <div class="row gx-3">
+                <label for="phone" class="form-label">Phone</label>
+                <input type="text" class="form-control" name="phone" required pattern="[0-9]{10,11}">
+                <div class="invalid-feedback"> // So dien thoai 10-11 so
+                    Sai Phone
+                </div>
+            </div>
+            <!-- Password -->
+            <div class="row gx-3">
+                <label for="password" class="form-label">Password</label> 
+                <input type="text" class="form-control pass" name="captchar" required pattern="\w{10,}">
+                <div class="invalid-feedback"> //password tren 10 ki tu
+                    Sai Password
+                </div>
+            </div>
+            <!-- Repass -->
+            <div class="row gx-3">
+                <label for="repass" class="form-label">Retype Password</label>
+                <input type="text" class="form-control repass" name="repass" required pattern="">
+                <div class="invalid-feedback"> // Nhap lai password
+                    Sai Retype Password
+                </div>
+            </div>
+            <!-- Description -->
+            <div class="row gx-3">
+                <label for="desc" class="form-label">Description yourself</label>
+                <textarea class="form-control" name="desc" ></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <script>
+        // ^[a-zA-Z0-9]{5,}(\.?[a-zA-Z0-9]+)*$ Username
+        const form = document.querySelector('form')
+        form.addEventListener('submit', (e) => {
+            if (form.checkValidity() === false) {
+                // Ngan khong cho form duoc gui di
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            form.classList.add('was-validated')
+        })
+        const pass = document.querySelector('.pass')
+        const repass = document.querySelector('.repass')
+        pass.addEventListener('input',()=> {
+            repass.setAttribute('pattern',pass.value)
+        })
+    </script>
+</body>
+
+</html>

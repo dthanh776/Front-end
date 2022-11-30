@@ -1,0 +1,40 @@
+.number {
+    width: 50px;
+    line-height: 50px;
+    display: inline-block;
+    border-radius: 25px;
+    position: absolute;
+    text-align: center;
+}
+
+.orange {
+    background: orange;
+}
+
+.red {
+    background: red;
+}
+
+.green {
+    background: green
+}
+
+.blue {
+    background: blue;
+    color: white
+}
+
+.black {
+    background: black;
+    color: white
+}
+.timeout{
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    position: fixed;
+    line-height: 800px;
+    display: none;
+    text-align: center;
+    color:white;
+    z-index:100;
+}

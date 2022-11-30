@@ -1,0 +1,13 @@
+.mouseverme,
+.clickme {
+  width: 200px;
+  height: 100px;
+  background: #d94a38;
+}
+p {
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: larger;
+  padding-top: 40px;
+}

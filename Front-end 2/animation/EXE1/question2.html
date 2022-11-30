@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="./public/css/styles.css">
+
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled">Disabled</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+    <!-- Banner -->
+    <!-- Main content -->
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-md-4">
+                <h4>Your measurements</h4>
+                <label for="width" class="form-label">Width: 0 &lt; width &lt; 800</label>
+                <input type="number" class="form-control" id="width">
+                <label for="height" class="form-label">Height: 0 &lt; height &lt; 1000</label>
+                <input type="number" class="form-control" id="height">
+                <div class="form-check">      
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="shape" id="box" checked value="0">
+                        Box
+                    </label>
+                </div>
+                <div class="form-check">      
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="shape" id="circle" value="50%">
+                        Circle
+                    </label>
+                </div>
+                <div class="form-check">      
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="shape" id="pill" value="900px">
+                        Pill
+                    </label>
+                </div>
+                <button class="btn btn-primary" id="btn-draw">Draw me</button>
+            </div>
+            <div class="col-md-8">
+                <h4>Result</h4>
+                <div id="result" class="bg-warning"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="bg-dark text-center py-5 text-white">
+        Copyright &copy; 2022 FIT-TDC
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script>
+        const btnDraw = document.querySelector('#btn-draw');
+        btnDraw.addEventListener('click', function () {
+            const width = document.querySelector('#width').value;
+            const height = document.querySelector('#height').value;
+            if (width > 0 && width < 800 && height > 0 && height < 1000) {
+                const result = document.querySelector('#result');
+                const checkedRadio = document.querySelector('input[name=shape]:checked').value;
+
+                result.style.width = width + 'px';
+                result.style.height = height + 'px';
+                result.style.borderRadius = checkedRadio;
+            }
+            else {
+                alert('Error!!!')
+            }
+            
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+header.top-header {
+    background: url(../images/banner.jpg);
+    background-size: cover;
+    text-align: center;
+    position: relative;
+}
+header.top-header h1 {
+    background: #fcc202;
+    border-radius: 500px;
+    display: inline-block;
+    padding: 30px;
+    margin: 200px 0;
+}
+
+.top-wave {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.top-wave path {
+    fill: #008ec0;
+    mix-blend-mode: multiply;
+}
+
+.bottom-wave {
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    width: 100%;
+    transform: rotate(180deg);
+}
+.bottom-wave path {
+    fill: #fff;
+}

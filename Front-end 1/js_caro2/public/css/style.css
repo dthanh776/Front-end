@@ -1,0 +1,42 @@
+table {
+    background-color: aqua;
+    margin: auto;
+    border-collapse: collapse;
+}
+
+td {
+    width: 50px;
+    height: 50px;
+    border: 1px solid white;
+}
+
+.content {
+    width: 1024px;
+    margin: auto;
+}
+
+h2 {
+    text-align: center;
+}
+
+.nobd {
+    border: none !important;
+}
+
+.check,
+#countdown {
+    font-family: cursive;
+    font-weight: bold;
+    font-size: 20pt;
+    color: #53532b;
+    text-shadow: 0 0 black;
+    text-align: center;
+}
+
+button {
+    width: 100px;
+    margin: 12px;
+    border: none;
+    border-radius: 8px;
+    background: aliceblue;
+}

@@ -1,0 +1,106 @@
+/* Header */
+.home-border {
+    border-top: 1px solid #abc7c7;
+    border-bottom: 1px solid #abc7c7;
+}
+header>nav{
+    border-bottom: 1px solid #abc7c7;
+}
+.button-header {
+    text-decoration-line: none;
+    border: solid 2px white;
+    color: white;
+    padding: 10px 30px; 
+}
+.carousel-caption {
+    left: 5%;
+    padding-bottom: 200px;
+}
+.about {
+    background: #4d7f87;
+}
+.text-h1{
+    font-weight: normal;
+    font-size: 50px;
+    padding-bottom: 10px;
+}
+.carousel h4 {
+    font-weight: normal;
+    font-size: 20px;
+    letter-spacing: 2px;
+    padding-bottom: 30px;
+}
+.book-now {
+    text-decoration-line: none;
+    border: solid 1px white;
+    padding: 10px 30px; 
+    color: white;
+}
+.contr{
+    color: white;
+    font-weight: bold;
+}
+.viet-nam {
+    padding-bottom: 20px;
+}
+.new{
+    background: #fdc10b;
+    border-radius: 10%;
+    padding: 1px 5px;
+    font-weight: bold;
+}
+.more-info{
+    text-decoration-line: none;
+    background: #26a3b8;
+    color: white;
+    border-radius: 10%;
+    font-weight: bold;
+    padding: 2px;
+}
+.more-info-div{
+    margin-top: 30px ;
+}
+.border-b {
+    border-bottom: solid 10px #177efc;
+
+}
+
+/* Body */
+.icon-body {
+    color: #177efc;
+    padding-top: 50px;
+    text-align: center;
+}
+.number-body{
+    font-size: 40px;
+}
+.text-body {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #81888c !important;
+    font-weight: bold;
+}
+
+
+/* Footer */
+footer {
+    background-color: #141414;
+}
+footer h4 {
+    color: white;
+    padding-top: 70px;
+ 
+}
+footer p {
+    color: #616262;
+    margin: 0;
+    padding: 4px;
+
+}
+.text-footer {
+    text-align: center;
+    background-color: #222222;
+    color: #616262;
+    padding: 15px 0;
+    margin-top: 70px
+}

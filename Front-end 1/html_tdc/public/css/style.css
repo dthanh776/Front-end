@@ -1,0 +1,94 @@
+body {
+    font-family: Arial;
+}
+.headers {
+    background-color: #343a40;
+    display: flex;
+}
+.logo {
+    color: white;
+    width: 30%;
+    padding-top: 17px;
+    padding-left: 150px;
+    font-weight: bold;
+}
+.home {
+    display: flex;
+    padding-left: 400px;
+    color: white;  
+    width: 70%;
+    font-weight: bold;
+}
+
+.home-color {
+    color: white;
+    text-decoration: none;
+}
+
+.question{
+    padding-left: 20px;
+    color: #989b9d;
+    text-decoration: none;
+}
+.banner {
+    background-color: #063b7a;
+}
+
+.banner {
+    padding: 100px 150px;
+}
+.welcome {
+    color: #ffffff;
+    font-weight: unset;
+    font-size: 50px;
+    margin: 0;
+}
+.lorem {
+    color: #7a9ab6;
+    font-size: 20px;
+    margin-top:0;
+}
+.content {
+    display: flex;
+}
+.main {
+    width: 55%;
+    padding-left: 150px;
+}
+.cright {
+    width: 45%;
+}
+.readabout{
+    border-bottom: 1px solid #e7e7e7;
+    margin-right: 30px;
+}
+.findus {
+    border-bottom:  1px solid #e7e7e7;
+    margin-right: 150px;
+}
+.readmmore {
+    background-color: #167bff;
+    color: #fcffff;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;    
+}
+.phone {
+    display: inline;
+    border-bottom: dotted ;
+    border-bottom: 1px dotted black;
+}
+
+.link {
+    display: inline;
+    border-bottom: 1px dotted black;
+}
+.footer {
+    background-color: #343a40;
+    color: #f7fffd;
+    text-align: center;
+    padding: 40px 0 ;
+    margin-top: 30px;
+    font-weight: bold;  
+}

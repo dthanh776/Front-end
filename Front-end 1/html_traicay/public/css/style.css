@@ -1,0 +1,64 @@
+header {
+    background: #f97f00;
+}
+
+.banner-text {
+    color: #f88e62;
+}
+
+.navbar-brand>img {
+    width: 100px;
+}
+
+.navbar {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: rgb(249 127 0) !important;
+    padding: 20px 15px;
+}
+
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .show>.nav-link {
+    color: rgb(255 255 255) !important;
+    background: #f97f00;
+    padding: 20px 15px;
+}
+
+.introduce {
+    color: #f97f00;
+    border-bottom: #f97f00 solid 3px;
+}
+
+.text-content {
+    color: #a59b9c;
+}
+
+.text-content1 {
+    color: #f97f00;
+}
+
+.date {
+    background: #dddddd;
+    color: white;
+    font-size: 25px;
+    text-align: center;
+    width: 270px;
+}
+
+.img-content {
+    border: dotted #8fb6d8 1px;
+    padding: 7px;
+}
+
+.image-products {
+    border: dotted #8fb6d8 1px;
+    padding: 7px;
+    margin: 5px;
+}
+
+footer {
+    background: #22a228;
+}

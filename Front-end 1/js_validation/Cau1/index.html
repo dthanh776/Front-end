@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Họ tên - MSSV</title>
+    <link rel="stylesheet" href="./public/css/bootstrap.min.css">
+    <style>body{background: #d4f5f9;}</style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Form Validation</h1>
+        <form action="#" method="get" novalidate>
+            <!-- slugname -->
+            <div class="form-group">
+                <label for="slugname">Slug Name</label>
+                <input type="text" class="form-control" name="slugname" id="slugname" required pattern="([a-zA-Z]+([-][a-zA-Z]+)*){5,}">
+                <div class="invalid-feedback">Sai Slug Name</div> //bui-duy-thanh
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+                <label for="phone">Password</label>
+                <input type="password" class="form-control" name="Password" id="Password" required pattern="(?=.*[A-Z])(?=.*[0-9])\w{6,}">
+                <div class="invalid-feedback">Sai Password</div> //chua it nhat 1 ky tu A-Z va 0-9 toi thieu 6 ki tu
+            </div>
+
+            <!-- Captchar -->
+            <div class="form-group">
+                <label for="captcha" class="labelCaptchar">Captcha: 0000</label>
+                <input type="text" class="form-control reCaptchar" name="captchar" id="captcha" required pattern="">
+                <div class="invalid-feedback">Sai Captcha</div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <script src="public/js/scripts.js"></script>
+</body>
+
+</html>
